@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import { FilesModule } from './files/files.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { database } from './variables';
+import { UserEntity } from './users/entities/user.entity';
+import { FileEntity } from './files/entities/file.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -14,7 +16,7 @@ import { database } from './variables';
     username: database.username,
     password: database.password,
     database: database.database,
-    entities: [],
+    entities: [UserEntity, FileEntity],
     synchronize: true,
   }),UsersModule, FilesModule],
   controllers: [AppController],
