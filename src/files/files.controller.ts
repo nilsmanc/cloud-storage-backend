@@ -2,9 +2,6 @@ import {
   Controller,
   Get,
   Post,
-  Body,
-  Patch,
-  Param,
   Delete,
   UseInterceptors,
   UploadedFile,
@@ -13,12 +10,13 @@ import {
   UseGuards,
   Query,
 } from '@nestjs/common';
-import { FilesService } from './files.service';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
+
+import { FilesService } from './files.service';
 import { fileStorage } from './storage';
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
-import { UserId } from 'src/decorators/user-id.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { UserId } from '../decorators/user-id.decorator';
 import { FileType } from './entities/file.entity';
 
 @Controller('files')
@@ -65,7 +63,6 @@ export class FilesController {
 
   @Delete()
   remove(@UserId() userId: number, @Query('ids') ids: string) {
-    // files?ids=1,2,7,8
     return this.filesService.remove(userId, ids);
   }
 }

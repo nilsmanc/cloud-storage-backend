@@ -1,5 +1,6 @@
-import { FileEntity } from 'src/files/entities/file.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+
+import { FileEntity } from '../../files/entities/file.entity';
 
 @Entity('users')
 export class UserEntity {

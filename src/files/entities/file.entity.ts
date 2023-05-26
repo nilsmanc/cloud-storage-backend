@@ -1,4 +1,3 @@
-import { UserEntity } from 'src/users/entities/user.entity';
 import {
   Column,
   DeleteDateColumn,
@@ -6,6 +5,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
+import { UserEntity } from '../../users/entities/user.entity';
 
 export enum FileType {
   PHOTOS = 'photos',
